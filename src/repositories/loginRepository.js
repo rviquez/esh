@@ -1,8 +1,9 @@
 import Repository from './Repository'
 
-const resource = '/ExternalSystem/GetAll'
+const resource = '/Account/SignIn'
+
 export default {
-  getLogin (payload) {
-    return Repository.post(`${resource}`, payload)
+  postLogin (payload) {
+    return Repository.post(`${resource}`, { 'Username': 'sa', 'Password': 'eva27rip' })
   }
 }

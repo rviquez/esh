@@ -17,15 +17,25 @@
 </template>
 
 <script>
+import { RepositoryFactory } from './../repositories/RepositoryFactory'
+const PostsRepository = RepositoryFactory.get('login') 
 export default {
   data() {
     return {
-      profile: this.$auth.profile
+      profile: this.$auth.profile,
+      login: []
     };
+  },
+  created () {
+    this.fetch()
   },
   methods: {
     handleLoginEvent(data) {
       this.profile = data.profile;
+    },
+    async fetch() {
+      const { data } = await PostsRepository.postLogin()
+      this.login = data
     }
   }
 };
